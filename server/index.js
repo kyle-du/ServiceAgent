@@ -43,6 +43,41 @@ app.get('/api/complaints', async (req, res) => {
   res.status(200).json(data);
 });
 
+app.patch('/api/complaints/:id', async (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body;
+
+  const { data, error } = await supabase
+    .from('complaints')
+    .update({ status })
+    .eq('id', id)
+    .select();
+
+  if (error) {
+    console.error('Error updating complaint status:', error.message);
+    return res.status(500).json({ error: 'Failed to update status' });
+  }
+
+  res.status(200).json(data[0]);
+});
+
+app.delete('/api/complaints/:id', async (req, res) => {
+  const { id } = req.params;
+
+  const { error } = await supabase
+    .from('complaints')
+    .delete()
+    .eq('id', id);
+
+  if (error) {
+    console.error('Error deleting complaint:', error.message);
+    return res.status(500).json({ error: 'Failed to delete complaint' });
+  }
+
+  res.status(200).json({ message: 'Complaint deleted successfully' });
+});
+
+
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);

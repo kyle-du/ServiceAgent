@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import UpdateButton from './UpdateButton';
 
 type Complaint = {
   id: string;
@@ -10,16 +11,12 @@ type Complaint = {
 };
 
 const AdminDashboard = () => {
-  const [complaints, setComplaints] = useState<Complaint[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
+    const [complaints, setComplaints] = useState<Complaint[]>([]);
+    const [loading, setLoading] = useState(true);
+    
     const fetchComplaints = async () => {
       try {
-        const res = await fetch('/api/complaints', {
-            method: 'GET',
-          });
-        if (!res.ok) throw new Error('Failed to fetch');
+        const res = await fetch('/api/complaints');
         const data = await res.json();
         setComplaints(data);
       } catch (err) {
@@ -28,9 +25,10 @@ const AdminDashboard = () => {
         setLoading(false);
       }
     };
-
-    fetchComplaints();
-  }, []);
+    
+    useEffect(() => {
+      fetchComplaints();
+    }, []);
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
@@ -64,6 +62,9 @@ const AdminDashboard = () => {
                   <td className="px-4 py-3 text-sm text-gray-700">{c.email}</td>
                   <td className="px-4 py-3 text-sm text-gray-900 max-w-sm break-words w-1/3">{c.complaint}</td>
                   <td className="px-4 py-3 text-sm text-gray-700">{c.status}</td>
+                  <td className="px-4 py-3 text-sm">
+                    <UpdateButton id={c.id} currentStatus={c.status} onUpdate={fetchComplaints}/>
+                  </td>
                 </tr>
               ))}
             </tbody>
