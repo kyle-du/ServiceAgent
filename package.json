@@ -1,0 +1,12 @@
+{
+    "name": "serviceagent-complaint-app",
+    "private": true,
+    "scripts": {
+        "build": "npm --prefix client run build",
+        "start": "node server/index.js",
+        "dev": "concurrently \"npm --prefix server run dev\" \"npm --prefix client run dev\""
+    },
+    "devDependencies": {
+        "concurrently": "^8.2.2"
+    }
+}
