@@ -26,7 +26,7 @@ const Complaint = () => {
     }
 
     try {
-      const res = await fetch(`${apiURL}/complaints`, {
+      const res = await fetch(`${apiURL}/api/complaints`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, complaint }),
