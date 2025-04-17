@@ -73,7 +73,7 @@ const AdminDashboard = () => {
                                 setFilterStatus(status as 'All' | 'Pending' | 'Resolved');
                                 applyFilters();
                             }}
-                            className={`px-3 py-1 text-sm rounded border ${
+                            className={`px-3 py-1 text-sm rounded border cursor-pointer ${
                                 filterStatus === status
                                 ? 'bg-blue-600 text-white border-blue-600'
                                 : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
