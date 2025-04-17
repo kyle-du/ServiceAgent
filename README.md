@@ -1,5 +1,5 @@
 ## ServiceAgent Complaint Management System Task
-Working Sample: (give the backend server 15-20 seconds to start up on first launch since Render free subscription spins down the server when not in use)
+Working Sample: (give the backend server 20-30 seconds to start up on first launch since Render free subscription spins down the server when not in use)
 - [Complaint Form](https://serviceagent-frontend.onrender.com/submit)
 - [Admin Page](https://serviceagent-frontend.onrender.com/admin)
 
