@@ -1,3 +1,5 @@
+const apiURL = import.meta.env.VITE_API;
+
 type Props = {
     id: string;
     onUpdate: () => void;
@@ -6,7 +8,7 @@ type Props = {
   const DeleteButton = ({ id, onUpdate }: Props) => {
     const handleDelete = async () => {
       try {
-        await fetch(`/api/complaints/${id}`, {
+        await fetch(`${apiURL}/api/complaints/${id}`, {
           method: 'DELETE',
         });
         onUpdate();

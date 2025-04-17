@@ -11,6 +11,8 @@ type Complaint = {
   created_at: string;
 };
 
+const apiURL = import.meta.env.VITE_API;
+
 const AdminDashboard = () => {
     const [loading, setLoading] = useState(true);
     const [filterStatus, setFilterStatus] = useState<'All' | 'Pending' | 'Resolved'>('All');
@@ -31,7 +33,7 @@ const AdminDashboard = () => {
     
     const fetchComplaints = async () => {
         try {
-          const res = await fetch('/api/complaints');
+          const res = await fetch(`${apiURL}/api/complaints/`);
           const data = await res.json();
           setAllComplaints(data);
           applyFilters(data);

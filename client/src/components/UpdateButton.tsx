@@ -1,3 +1,6 @@
+
+const apiURL = import.meta.env.VITE_API;
+
 type Props = {
     id: string;
     currentStatus: string;
@@ -8,7 +11,7 @@ const UpdateButton = ({id, currentStatus, onUpdate} : Props) => {
     const newStatus = currentStatus === "Resolved" ? "Pending" : "Resolved";
     const handleClick = async () => {
         try {
-            await fetch(`/api/complaints/${id}`, {
+            await fetch(`${apiURL}/api/complaints/${id}`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ status: newStatus }),
