@@ -6,6 +6,10 @@
         "start": "node server/index.js",
         "dev": "concurrently \"npm --prefix server run dev\" \"npm --prefix client run dev\""
     },
+    "workspaces": [
+        "client",
+        "server"
+      ],
     "devDependencies": {
         "concurrently": "^8.2.2"
     }
