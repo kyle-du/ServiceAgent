@@ -12,7 +12,7 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY
 );
 
-// API route
+// API POST endpoint
 app.post('/api/complaints', async (req, res) => {
   const { name, email, complaint } = req.body;
 
@@ -29,6 +29,7 @@ app.post('/api/complaints', async (req, res) => {
   res.status(200).json({ message: 'Complaint stored in Supabase', data });
 });
 
+// GET endpoint
 app.get('/api/complaints', async (req, res) => {
   const { data, error } = await supabase
     .from('complaints')
@@ -43,6 +44,7 @@ app.get('/api/complaints', async (req, res) => {
   res.status(200).json(data);
 });
 
+// PATCH endpoint
 app.patch('/api/complaints/:id', async (req, res) => {
   const { id } = req.params;
   const { status } = req.body;
@@ -61,6 +63,7 @@ app.patch('/api/complaints/:id', async (req, res) => {
   res.status(200).json(data[0]);
 });
 
+// DELETE endpoint
 app.delete('/api/complaints/:id', async (req, res) => {
   const { id } = req.params;
 
