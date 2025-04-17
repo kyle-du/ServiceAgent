@@ -6,6 +6,7 @@ const Complaint = () => {
   const [complaint, setComplaint] = useState('');
   const [success, setSuccess] = useState(false);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const apiURL = import.meta.env.VITE_API;
 
   const validate = () => {
     const newErrors: { [key: string]: string } = {};
@@ -25,7 +26,7 @@ const Complaint = () => {
     }
 
     try {
-      const res = await fetch('/api/complaints', {
+      const res = await fetch(`${apiURL}/complaints`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, complaint }),
