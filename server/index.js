@@ -21,8 +21,8 @@ app.post('/api/complaints', async (req, res) => {
     .insert([{ name, email, complaint }]);
 
   if (error) {
-    console.error('Supabase insert error:', error);
-    return res.status(500).json({ error: 'Failed to save complaint' });
+    console.error('Supabase post error:', error);
+    return res.status(500).json({ error: 'Failed to post complaint' });
   }
 
   console.log('Complaint saved:', data);
@@ -37,7 +37,7 @@ app.get('/api/complaints', async (req, res) => {
     .order('created_at', { ascending: false });
 
   if (error) {
-    console.error('Error fetching complaints:', error.message);
+    console.error('Supabase fetch error:', error.message);
     return res.status(500).json({ error: 'Failed to fetch complaints' });
   }
 
@@ -56,8 +56,8 @@ app.patch('/api/complaints/:id', async (req, res) => {
     .select();
 
   if (error) {
-    console.error('Error updating complaint status:', error.message);
-    return res.status(500).json({ error: 'Failed to update status' });
+    console.error('Supabase patch error:', error.message);
+    return res.status(500).json({ error: 'Failed to patch status' });
   }
 
   res.status(200).json(data[0]);
@@ -73,7 +73,7 @@ app.delete('/api/complaints/:id', async (req, res) => {
     .eq('id', id);
 
   if (error) {
-    console.error('Error deleting complaint:', error.message);
+    console.error('Supabase delete error:', error.message);
     return res.status(500).json({ error: 'Failed to delete complaint' });
   }
 

@@ -3,7 +3,7 @@
 ### 1. Setup
 - Clone this repository. Run `npm install` at project root. 
 - Create a `.env` file in `./server/` and enter `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY`
-- Modify `target` in `./client/vite.config.ts` to reflect the domain and port where the backend server will run (default `localhost:3000` for demo purposes).
+- Create a `.env` file in `./client/` and enter `VITE_API` which is the URL the backend server is running on. In dev, can leave this field blank as it defaults to http://localhost:3000.
 - Run `npm run dev` in project root to start backend + frontend
 
 ### 2. Assumptions & Tradeoffs
